@@ -1,0 +1,422 @@
+@import 'variables';
+@import 'fonts';
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+
+    display: grid;
+    grid-template-rows: 1fr auto;
+
+    width: 100%;
+
+    &__content-wrapper {
+        background-image: url('../images/header-bg.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        min-height: 600px;
+        display: grid;
+        grid-template-rows: auto 1fr;
+    }
+
+    &__navbar-wrapper {
+        display: grid;
+        grid-template-columns: 250px 1fr 220px;
+        padding: 8px 134px 8px 205px;
+        background: rgba(255, 255, 255, 0.9);
+        @include block-shadow(0, 4px, 4px);
+        z-index: 10;
+    }
+
+    &__logo {
+        @include alignment(center, center);
+    }
+
+    &__navigation {
+        align-self: center;
+        justify-self: center;
+
+        &-menu {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            @include font-style('Lato-bold', $main-color, 14px, uppercase);
+        }
+
+        &-item {
+            list-style-type: none;
+        }
+
+        &-link {
+            display: inline-block;
+            padding: 12px;
+            @include font-style('Lato-bold', $main-color, 14px, uppercase);
+            text-decoration: none;
+
+            &:hover {
+                color: $dark-color;
+            }
+        }
+    }
+
+    &__appointment-button {
+        @include font-style('Lato-bold', $main-color, 14px, uppercase);
+        @include alignment(center, center);
+        @include button-style(8px, 12px);
+
+        &:hover {
+            @include button-hover($main-color, $white-color);
+        }
+    }
+
+    &__about {
+        text-align: right;
+        padding: 0 134px 0 205px;
+        position: relative;
+        z-index: 10;
+
+        &-wrapper {
+
+            position: relative;
+            overflow: hidden;
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: 370px;
+                background: linear-gradient(87.68deg, rgba(255, 255, 255, 0) 7.73%, rgba(255, 255, 255, 0.9) 55.76%);
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        &-complex {
+            @include font-style('Lato-bold', $main-color, 16px, uppercase);
+            margin: 0;
+            padding-top: 60px;
+        }
+
+        &-title {
+            @include font-style('PFDin', $dark-color, 50px);
+            font-weight: normal;
+            margin: 0;
+            line-height: 55px;
+        }
+
+        &-button {
+            @include font-style('Lato-bold', $white-color, 14px, uppercase);
+            @include button-style(8px, 59px, $main-color);
+            margin-top: 64px;
+
+            &:hover {
+                @include button-hover($white-color, $main-color);
+            }
+        }
+    }
+
+    &__contacts {
+        background-color: $main-color;
+        padding: 12px 205px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        align-items: center;
+        @include font-style('Karla', $white-color, 14px);
+        @include block-shadow(0, 4px, 4px);
+
+        &-address {
+            text-align: center;
+            margin: 0;
+        }
+
+        &-phone {
+            @include font-style('Karla', $white-color, 14px);
+            text-decoration: none;
+
+            &:hover {
+                color: $dark-color;
+            }
+
+            &_wrapper {
+                display: grid;
+                grid-template-rows: repeat(3, 1fr);
+                width: 100%;
+                text-align: center;
+                border-left: 2px solid $white-color;
+                border-right: 2px solid $white-color;
+            }
+        }
+
+        &-email {
+            @include alignment(center, center);
+            @include font-style('Karla', $white-color, 14px);
+            text-decoration: none;
+
+            &:hover {
+                color: $dark-color;
+            }
+        }
+    }
+}
+
+.content {
+    &__complex {
+        text-align: center;
+        padding: 0 188px;
+
+        &-subtitle {
+            @include font-style('Lato-regular', $grey-color, 14px, uppercase);
+            margin: 0;
+            padding-top: 46px;
+        }
+
+        &-title {
+            @include font-style('Lato-regular', $dark-color, 30px);
+        }
+
+        &-group {
+            padding-bottom: 80px;
+        }
+
+        &-direction {
+            margin: 0;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            position: relative;
+            margin-top: 70px;
+
+            &_title {
+                @include font-style('Lato-regular', $dark-color, 16px, uppercase);
+                text-decoration: none;
+            }
+
+            &::before {
+                position: absolute;
+                content: url('../images/star.svg');
+                left: calc(50% - 75px);
+                top: -58px;
+            }
+
+            &_item {
+                display: grid;
+                justify-content: center;
+                list-style-type: none;
+                align-content: space-between;
+                @include font-style('Lato-regular', $dark-color, 16px, uppercase);
+                position: relative;
+
+                &:nth-child(even) {
+                    border-left: 2px solid $main-color;
+                    border-right: 2px solid $main-color;
+                }
+            }
+
+            &_image {
+                justify-self: center;
+            }
+        }
+    }
+
+    &__slider {
+        background: #F6F6F6;
+        box-shadow: inset 0px 4px 10px rgba(0, 0, 0, 0.25);
+        padding: 48px 115px;
+
+        &-wrapper {
+            max-width: 1450px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 420px 1fr;
+        }
+
+        &-info {
+            align-self: center;
+
+            &_title {
+                @include font-style('Lato-bold', $dark-color, 18px, uppercase);
+            }
+
+            &_description {
+                @include font-style('Helvetica-Neue', $dark-color, 14px);
+            }
+
+            &_button {
+                @include button-style(14px, 88px);
+                @include font-style('Lato-bold', $main-color, 14px);
+                
+                &:hover {
+                    @include button-hover($main-color, $white-color);
+                }
+            }
+        }
+
+        &-image {
+            float: right;
+            object-fit: cover;
+
+            &_wrapper {
+                justify-self: end;
+            }
+        }
+    }
+}
+
+.active-item {
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -130px;
+        border: 20px solid transparent;
+        border-left: 40px solid $white-color;
+        transform: rotate(90deg);
+        left: calc(50% - 30px);
+        filter: drop-shadow(5px 0px 3px rgba(0, 0, 0, 0.35));
+        display: block;
+        z-index: 100;
+    }
+}
+
+@media screen and (max-width: 1190px) {
+    .header__navbar-wrapper {
+        padding: 8px 50px;
+    }
+
+    .header__about-wrapper::before {
+        left: 250px;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .header__navbar-wrapper {
+        padding: 8px 50px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+    }
+
+    .header__logo {
+        grid-row: 1/2;
+    }
+
+    .header__navigation {
+        grid-row: 1/2;
+    }
+
+    .header__appointment-button {
+        grid-column: 1/3;
+        grid-row: 2/3;
+        align-self: center;
+        justify-self: center;
+    }
+
+    .header__contacts {
+        padding: 12px 0;
+
+        &-address {
+            margin: 0;
+        }
+    }
+
+    .content__complex {
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 860px) {
+    .header__about {
+        text-align: center;
+        padding: 0;
+    }
+
+    .header__contacts {
+        padding: 12px 0;
+
+        &-address {
+            margin: 0;
+        }
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .header__navbar-wrapper {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, auto);
+    }
+
+    .header__logo {
+        grid-row: 1/2;
+        @include alignment(center, center);
+    }
+
+    .header__navigation {
+        grid-row: 2/3;
+        @include alignment(center, center);
+    }
+
+    .header__appointment-button {
+        grid-column: 1/3;
+        grid-row: 3/4;
+        align-self: center;
+        justify-self: center;
+    }
+
+    .content__slider {
+        padding: 48px 40px;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .header__navbar-wrapper {
+        padding: 8px 0;
+    }
+
+    .header__about-title {
+        padding: 0 10px;
+    }
+
+    .header__contacts {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+    .content__complex-direction_title {
+        font-size: 14px;
+    }
+
+    .header__contacts-phone_wrapper {
+        border: none;
+    }
+
+    .content__slider-info {
+        margin-bottom: 40px;
+    }
+
+    .content__slider-image {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media screen and (max-width: 388px) {
+    .header__navigation-menu {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+    }
+
+    .header__about {
+        margin-bottom: 40px;
+    }
+
+    .content__slider-info_button {
+        padding: 14px 68px
+    }
+}
